@@ -1,0 +1,34 @@
+body{
+    font-family:"microsoft yahei","Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#ffffff;
+    overflow:hidden;
+    background-color: #030305;
+    height:100%;
+}
+#Strip{
+    padding-top: 150px;
+    height:600px;
+}
+#pic{
+    background:url(../img/mercury.jpg) no-repeat 50% 50%;
+    height: 100%;
+}
+@media (max-width: 992px) {
+    #pic {
+        display: none;
+    }
+}
+#login{
+    background-color: #ab002c;
+    /*background-color: #286090;*/
+    height: 100%;
+    border-radius: 10px;
+}
+#loginTitle{
+    padding:20px 15px;
+    font-size:50px;
+}
+#loginButton{
+    float:right;
+    background-color: #FB5C98;
+}

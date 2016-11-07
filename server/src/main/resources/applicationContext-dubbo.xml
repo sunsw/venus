@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="mercury-server" organization="sunsw" logger="slf4j"/>
+    <!-- expose service after spring initialization -->
+    <dubbo:provider delay="-1"/>
+
+    <!-- dubbo接口去除注册中心，采用直连的方式  -->
+    <!--<dubbo:registry address="N/A" />-->
+
+    <dubbo:registry protocol="zookeeper" address="${registry.address}" id="selfService" default="true"/>
+
+    <dubbo:protocol name="${protocol.name}" port="${protocol.port}">
+        <dubbo:parameter key="connect.timeout" value="5000000"/>
+        <dubbo:parameter key="payload" value="18388608"/>
+    </dubbo:protocol>
+
+    <!-- user info & auth-->
+    <dubbo:service interface="com.sunsw.mercury.service.AuthUserService" ref="authUserService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.AuthRoleService" ref="authRoleService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.AuthPermissionService" ref="authPermissionService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.AuthRolePermissionService" ref="authRolePermissionService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.SysMenuService" ref="sysMenuService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.SysRoleMenuService" ref="sysRoleMenuService" group="mercury" version="1.0"/>
+    <dubbo:service interface="com.sunsw.mercury.service.SysOrganizationService" ref="sysOrganizationService" group="mercury" version="1.0"/>
+
+</beans> 

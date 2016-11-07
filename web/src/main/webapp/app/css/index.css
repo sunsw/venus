@@ -1,0 +1,21 @@
+/*悬停显示菜单*/
+.navbar-brand {
+    padding: 0px;
+}
+
+.nav > li .dropdown-menu {
+    margin: 0;
+}
+
+.nav > li:hover .dropdown-menu {
+    display: block;
+}
+
+.mercury-nav {
+    width: 120px;
+    text-align: center;
+}
+
+.mercury-nav ul li a {
+    text-align: center;
+}
